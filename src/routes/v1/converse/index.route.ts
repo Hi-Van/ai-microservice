@@ -47,12 +47,12 @@ converseRouter.post("/", async (req: ConverseRequest, res: Response) => {
 
     if (reply.type === "text") {
       return res.status(200).send({
-        messages: reply.text.value,
+        content: reply.text.value,
         threadId: threadId ? threadId : thread.id,
       });
     } else {
       return res.status(200).send({
-        messages: "Sorry, I don't understand. Please ask another question.",
+        content: "Sorry, I don't understand. Please ask another question.",
         threadId: threadId ? threadId : thread.id,
       });
     }
