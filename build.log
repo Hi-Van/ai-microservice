@@ -1,0 +1,84 @@
+#0 building with "default" instance using docker driver
+
+#1 [server internal] load build definition from Dockerfile
+#1 transferring dockerfile: 2.66kB done
+#1 DONE 0.0s
+
+#2 [server] resolve image config for docker-image://docker.io/docker/dockerfile:1
+#2 DONE 0.5s
+
+#3 [server] docker-image://docker.io/docker/dockerfile:1@sha256:a57df69d0ea827fb7266491f2813635de6f17269be881f696fbfdf2d83dda33e
+#3 CACHED
+
+#4 [server internal] load metadata for docker.io/library/node:20.9.0-alpine
+#4 DONE 0.4s
+
+#5 [server internal] load .dockerignore
+#5 transferring context: 663B done
+#5 DONE 0.0s
+
+#6 [server base 1/2] FROM docker.io/library/node:20.9.0-alpine@sha256:cb2301e2c5fe3165ba2616591efe53b4b6223849ac0871c138f56d5f7ae8be4b
+#6 DONE 0.0s
+
+#7 [server internal] load build context
+#7 transferring context: 1.10kB done
+#7 DONE 0.0s
+
+#8 [server base 2/2] WORKDIR /usr/src/app
+#8 CACHED
+
+#9 [server deps 1/1] RUN --mount=type=bind,source=package.json,target=package.json     --mount=type=bind,source=package-lock.json,target=package-lock.json     --mount=type=cache,target=/root/.npm     npm ci --omit=dev
+#9 CACHED
+
+#10 [server build 1/3] RUN --mount=type=bind,source=package.json,target=package.json     --mount=type=bind,source=package-lock.json,target=package-lock.json     --mount=type=cache,target=/root/.npm     npm ci
+#10 CACHED
+
+#11 [server build 2/3] COPY . .
+#11 DONE 0.1s
+
+#12 [server build 3/3] RUN npm run build
+#12 0.670 
+#12 0.670 > ai-microservice@1.0.0 build
+#12 0.670 > tsc
+#12 0.670 
+#12 2.064 npm notice 
+#12 2.064 npm notice New minor version of npm available! 10.1.0 -> 10.7.0
+#12 2.064 npm notice Changelog: <https://github.com/npm/cli/releases/tag/v10.7.0>
+#12 2.065 npm notice Run `npm install -g npm@10.7.0` to update!
+#12 2.065 npm notice 
+#12 DONE 2.1s
+
+#13 [server final 1/3] COPY package.json .
+#13 CACHED
+
+#14 [server final 2/3] COPY --from=deps /usr/src/app/node_modules ./node_modules
+#14 CACHED
+
+#15 [server final 3/3] COPY --from=build /usr/src/app/dist ./dist
+#15 CACHED
+
+#16 [server] exporting to image
+#16 exporting layers done
+#16 writing image sha256:753e5c6e6a67de62d28b6f59bc260abbfdbcc0e0a4f4a611a8ba18a2bd0a0317 done
+#16 naming to docker.io/library/ai-microservice-server done
+#16 DONE 0.0s
+[1A[1B[0G[?25l[+] Running 0/0
+ [33m-[0m Container ai-microservice-server-1  Recreate[34m0.1s [0m
+[?25h[1A[1A[0G[?25l[+] Running 0/1
+ [33m-[0m Container ai-microservice-server-1  Recreated[34m0.1s [0m
+[?25hAttaching to server-1
+[2Kserver-1  | 
+[2Kserver-1  | > ai-microservice@1.0.0 serve
+[2Kserver-1  | > node dist/index.js
+[2Kserver-1  | 
+[2K[2K[2K[2K[2K[2K[2K[2K[2K[2K[2K[2K[2K[2K[2K[2K[2K[2K[2K[2K[2K[2K[2K[1A[1B[0G[?25l[+] Stopping 0/0
+ [33m-[0m Container ai-microservice-server-1  Stopping[34m0.1s [0m
+[?25h[1A[1B[0G[?25l[+] Killing 0/0
+ [33m-[0m Container ai-microservice-server-1  Killing[34m0.1s [0m
+[?25h[1A[1A[0G[?25l[+] Stopping 0/1
+ [33m-[0m Container ai-microservice-server-1  Stopping[34m0.2s [0m
+[?25h[1A[1A[0G[?25l[34m[+] Stopping 1/1[0m
+ [32m✔[0m Container ai-microservice-server-1  [32mStopped[0m[34m0.2s [0m
+[?25h[1A[1A[0G[?25l[34m[+] Killing 1/1[0m
+ [31m[1m✘[0m Container ai-microservice-server-1  [31m[1mError while Killing[0m[34m0.1s [0m
+[?25h
